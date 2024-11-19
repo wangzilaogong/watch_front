@@ -8,10 +8,10 @@
 
 ```bash
 # 克隆项目
-git clone https://gitlab.bitahub.com/zhnn-application-development/jiangxi-project-frontend
+git clone https://github.com/wangzilaogong/watch_front.git
 
 # 进入项目目录
-cd jiangxi-project-frontend
+cd WATCH_FRONT
 
 # 安装依赖
 npm install
