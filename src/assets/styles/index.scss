@@ -1,0 +1,217 @@
+@import './element-ui.scss';
+
+body {
+  height: 100%;
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  background: #ebf1f7;
+}
+
+#app {
+  max-width: 1920px;
+  margin:0 auto;
+  font-size: 16px !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+//浮动、清除浮动
+.clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+//字体相关
+.fs12 {
+  font-size: 12px;
+}
+.fs13 {
+  font-size: 13px;
+}
+.fs14 {
+  font-size: 14px;
+}
+.fs15 {
+  font-size: 15px;
+}
+.fs16 {
+  font-size: 16px;
+}
+.fs18 {
+  font-size: 18px;
+}
+.fs20 {
+  font-size: 20px;
+}
+.fs24 {
+  font-size: 24px;
+}
+.fs30 {
+  font-size: 30px;
+}
+.fw600 {
+  font-weight: 600 !important;
+}
+.fwb {
+  font-weight: bold !important;
+}
+
+//布局定位
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute !important;
+}
+.fixed {
+  position: fixed;
+}
+.mh-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.hide {
+  visibility: hidden !important;
+}
+.hidden {
+  display: none !important;
+}
+.flex {
+  display: -webkit-flex;
+  display: flex;
+}
+.inline-flex {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+.inline-b {
+  display: inline-block !important;
+}
+.justify-content-c {
+  justify-content: center;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-around {
+  justify-content: space-around;
+}
+.align-items-c {
+  align-items: center;
+}
+.flex1 {
+  flex: 1;
+}
+
+// 文字位置设置
+.text-left {
+  text-align: left !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-underline {
+  text-decoration: underline;
+}
+
+// 垂直方向对齐方式
+.v-top {
+  vertical-align: top !important;
+}
+.v-middle {
+  vertical-align: middle !important;
+}
+.v-bottom {
+  vertical-align: bottom !important;
+}
+.v-baseline {
+  vertical-align: baseline !important;
+}
+//单行省略
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pointer {
+  cursor: pointer;
+}
+
+  ::-webkit-scrollbar{
+    width: 4px;
+    height:4px;
+    background-color: #F2F6FA;
+  }
+  /*定义滚动条轨道 内阴影+圆角*/
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    background-color: #F2F6FA;
+  }
+  /*定义滑块 内阴影+圆角*/
+  ::-webkit-scrollbar-thumb{
+    border-radius: 2px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    background-color: #00706B;
+  }
+  .operate-btn {
+    cursor: pointer;
+    margin: 0 20px 0 0;
+    color: #00706b;
+    &:hover{
+      color: rgba(0, 112, 107, 0.6);
+    }
+  }
+  .upload-model{
+    cursor: pointer;
+    &:hover{
+      color: rgba(0, 112, 107, 0.6);
+    }
+  }
+
+
+// 文字按钮颜色
+.blue-text-btn{
+  color: #00A2E5;
+}
+.yellow-text-btn{
+  color: #FFB320;
+}
+.green-text-btn{
+  color: #00E64C;
+}
+.red-text-btn{
+  color: #FF2020;
+}
+button{
+  outline: none;
+}
