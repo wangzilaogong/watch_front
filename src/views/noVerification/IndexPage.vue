@@ -4,16 +4,13 @@
       <div class="index-page-one flex justify-content-between">
         <div class="left-box">
           <div class="title">
-            I am the headline of the<br />
-            copywriting
+            The First Web3 Watch on BNB Smart Chain<br />
           </div>
           <div class="content">
-            WHAT IS DISPLAYED HERE IS THE COPY INFORMATION. I WILL BRING YOU
-            MORE UPDATED DATA INFORMATION, I WILL BRING YOU MORE UPDATED DATA
-            INFORMATION.
+            A Web3 Watch that Promotes Health, Happiness, Fun, and Earn-as-You-Go! Purchase Now and Embrace the Future of Web3 Lifestyle!
           </div>
-          <button class="next-link flex justify-content-c align-items-c">
-            <span style="padding: 0 30px 0 0">buy agentNode</span>
+          <button class="next-link flex justify-content-c align-items-c" @click="router.push({path:'/watch'})">
+            <span style="padding: 0 30px 0 0">Purchase Now</span>
             <el-icon :size="30"><Right /></el-icon>
           </button>
         </div>
@@ -45,7 +42,7 @@
       <div class="index-page-three flex justify-content-between">
         <div class="item-box">
           <div class="item-icon item-icon1"></div>
-          <div class="item-title">roadmap 1 阶段</div>
+          <div class="item-title">ROADMAP 1</div>
           <div class="item-content">
             AgentNode 发售<br />
             白名单活动<br />

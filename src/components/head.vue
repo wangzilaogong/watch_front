@@ -45,11 +45,11 @@ import { linkWallet } from "@/utils/common.js";
 const router = useRouter();
 const navList = ref([
   {
-    label: "product",
+    label: "Product",
     icon: new URL("../assets/images/product.png", import.meta.url).href,
     childNav: [
       {
-        label: "AgentNobe",
+        label: "AgentNode",
         url: "",
       },
       {
@@ -64,9 +64,13 @@ const navList = ref([
     childNav: [],
   },
   {
-    label: "DOC",
+    label: "Doc",
     icon: new URL("../assets/images/DOC.png", import.meta.url).href,
-    childNav: [],
+    childNav: [   
+      {
+        label: "White Paper",
+        url: "",
+      },],
   },
 ]);
 const linkWalletFun = async () => {

@@ -59,7 +59,7 @@
     <div class="watch-block1 flex justify-content-between">
       <img class="left-img" src="../../assets/images/watch_img.png" />
       <div class="right-box">
-        <div class="title">Please call me the headline</div>
+        <div class="title">Limited Edition Web3 Watch</div>
         <div class="txt">
           Accelerate growth and get closer to the edge with Aethir's distri<br />
           buted cloud compute infrastructure. We provide secure, cost-eff<br />
