@@ -25,7 +25,7 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
     // 根据后端定义的规则去进行封装返回的数据
     if (response.status === 401) {
-        ElMessage.warning('登录状态已过期，请重新登录')
+        ElMessage.warning('Login status has expired, please log in again')
         localStorage.removeItem('token')
         location.reload();
     } else if (response.status === 500) {

@@ -33,7 +33,7 @@
       </div>
       <span v-if="walletAccount" class="wallet-account">{{ walletAccount }}</span>
       <el-button v-else class="link-wallet" @click="getRelationshipFun()"
-        >连接钱包</el-button
+        >Connect wallet</el-button
       >
     </div>
   </div>
@@ -44,6 +44,9 @@ import { ArrowDown } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { linkWallet } from "@/utils/common.js";
 import { getRelationship } from "@/api/base.js";
+import { userStore } from "@/store/userStore.js";
+
+const store = userStore();
 const router = useRouter();
 const navList = ref([
   {
@@ -81,7 +84,7 @@ const linkWalletFun = async () => {
   try {
     const accounts = await window.web3.eth.getAccounts();
     if (accounts[0]) {
-      ElMessage.success("钱包已连接");
+      ElMessage.success("Wallet is connected");
     } else {
       linkWallet();
     }
@@ -119,6 +122,7 @@ const getRelationshipFun = async () => {
       accounts[0].substring(0, 4) +
       "****" +
       accounts[0].substr(accounts[0].length - 4);
+      store.changeAccount(accounts[0]);
     const { data } = await getRelationship({
       address: accounts[0],
     });
@@ -132,6 +136,7 @@ const getRelationshipFun = async () => {
   }
 };
 onBeforeMount(async () => {
+  store.changeAccount('');
   try {
     const accounts = await window.web3.eth.getAccounts();
     if (accounts[0]) {
@@ -139,6 +144,7 @@ onBeforeMount(async () => {
         accounts[0].substring(0, 4) +
         "****" +
         accounts[0].substr(accounts[0].length - 4);
+        store.changeAccount(accounts[0]);
     }
   } catch (e) {
     walletAccount.value = "";

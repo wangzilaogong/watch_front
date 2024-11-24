@@ -28,7 +28,7 @@ export const linkWallet = async () => {
             console.error(error);
         }
     } else {
-        alert('需要安装MetaMask等以太坊钱包扩展');
+        alert('Requires the Ethereum wallet extension to be installed');
     }
 }
 
@@ -48,7 +48,7 @@ export const tokenApprove = async (amount) => {
             console.error(error);
         }
     } else {
-        alert('请先连接钱包');
+        alert('Please connect the wallet first');
     }
 }
 /**

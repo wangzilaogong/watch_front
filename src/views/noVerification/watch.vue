@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="dialogVisible"
-    title="收货信息"
+    title="Receiving information"
     width="700px"
     :destroy-on-close="true"
     :close-on-click-modal="false"
@@ -13,32 +13,32 @@
       :rules="rules"
       label-width="auto"
     >
-      <el-form-item label="省份" prop="province">
+      <el-form-item label="province" prop="province">
         <el-input v-model.trim="ruleForm.province" clearable />
       </el-form-item>
-      <el-form-item label="城市" prop="city">
+      <el-form-item label="City" prop="city">
         <el-input v-model.trim="ruleForm.city" clearable />
       </el-form-item>
-      <el-form-item label="区域" prop="district">
+      <el-form-item label="area" prop="district">
         <el-input v-model.trim="ruleForm.district" clearable />
       </el-form-item>
-      <el-form-item label="街道" prop="street">
+      <el-form-item label="street" prop="street">
         <el-input v-model.trim="ruleForm.street" clearable />
       </el-form-item>
-      <el-form-item label="详细地址" prop="detailed_address">
+      <el-form-item label="Detailed address" prop="detailed_address">
         <el-input
           type="textarea"
           v-model.trim="ruleForm.detailed_address"
           clearable
         />
       </el-form-item>
-      <el-form-item label="收件人姓名" prop="recipient_name">
+      <el-form-item label="Recipient name" prop="recipient_name">
         <el-input v-model.trim="ruleForm.recipient_name" clearable />
       </el-form-item>
-      <el-form-item label="收件人手机号" prop="phone_number">
+      <el-form-item label="Recipient’s mobile phone number" prop="phone_number">
         <el-input v-model.trim="ruleForm.phone_number" clearable />
       </el-form-item>
-      <el-form-item label="收件人邮箱" prop="email">
+      <el-form-item label="Recipient email" prop="email">
         <el-input v-model.trim="ruleForm.email" clearable />
       </el-form-item>
       <el-form-item>
@@ -48,9 +48,9 @@
             v-loading="purchaseLoading"
             @click="submitForm(ruleFormRef)"
           >
-            确定
+            Submit
           </el-button>
-          <el-button @click="resetForm(ruleFormRef)">取消</el-button>
+          <el-button @click="resetForm(ruleFormRef)">Cancel</el-button>
         </div>
       </el-form-item>
     </el-form>
@@ -64,7 +64,8 @@
           Heart Rate Monitor: Tracks your heart rate in real time<br />
           Step Counter: Records the number of steps you take<br />
           Sleep Tracker: Monitors your sleep patterns<br />
-          Exercise Modes: Tracks specific activities like running, cycling, or swimming
+          Exercise Modes: Tracks specific activities like running, cycling, or
+          swimming
         </div>
         <div class="price-box flex align-items-c justify-content-between">
           <div class="price-title">Price</div>
@@ -76,7 +77,7 @@
             v-loading="purchaseLoading"
             @click="buyWatch('399')"
           >
-          Purchase
+            Purchase
           </div>
           <div
             class="rebate-invitation flex align-items-c justify-content-between"
@@ -106,7 +107,11 @@
             <span>1</span>
           </template>
         </el-table-column>
-        <el-table-column prop="shipping_address" align="center" label="Address" />
+        <el-table-column
+          prop="shipping_address"
+          align="center"
+          label="Address"
+        />
       </el-table>
       <div v-if="form.total > 10" class="paging-box">
         <el-pagination
@@ -128,7 +133,9 @@
 import { linkWallet, tokenApprove } from "@/utils/common.js";
 import { getOrderlist, updateAddress } from "@/api/base.js";
 import { onBeforeMount } from "vue";
+import { userStore } from "@/store/userStore.js";
 
+const store = userStore();
 const form = ref({
   pageNum: 1,
   pageSize: 10,
@@ -155,51 +162,51 @@ const ruleForm = reactive({
 const dialogVisible = ref(false);
 const ruleFormRef = ref();
 const validatePhone = (rule, value, callback) => {
-  const regex = /^1[3-9]\d{9}$/; // 
+  const regex = /^1[3-9]\d{9}$/; //
   if (!regex.test(value)) {
-    callback(new Error("请输入正确的手机号码"));
+    callback(new Error("Please enter the correct mobile phone number"));
   } else {
     callback();
   }
 };
 const rules = reactive({
   recipient_name: [
-    { required: true, message: "请输入收件人姓名", trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { required: true, message: "Please enter recipient name", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   province: [
-    { required: true, message: "请输入省份", trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { required: true, message: "Please enter province", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   city: [
-    { required: true, message: "请输入城市", trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { required: true, message: "Please enter city", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   district: [
-    { required: true, message: "请输入区域", trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { required: true, message: "Please enter the area", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   street: [
-    { required: true, message: "请输入街道", trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { required: true, message: "Please enter street", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   detailed_address: [
-    { required: true, message: "请输入详细地址", trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { required: true, message: "Please enter detailed address", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   phone_number: [
-    { required: true, message: "请输入收件人手机号", trigger: "blur" },
+    { required: true, message: "Please enter the recipient's mobile phone number", trigger: "blur" },
     { validator: validatePhone, trigger: "blur" },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
   email: [
-    { required: true, message: "请输入收件人邮箱", trigger: "blur" },
+    { required: true, message: "Please enter the recipient's email address", trigger: "blur" },
     {
       type: "email",
-      message: "请输入正确的邮箱地址",
+      message: "Please enter a correct email address",
       trigger: ["blur", "change"],
     },
-    { min: 1, max: 100, message: "请输入不超过100个字符", trigger: "blur" },
+    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
   ],
 });
 const newOrderAddress = ref({});
@@ -244,7 +251,7 @@ const purchase = async (val) => {
     await tokenApprove(val);
   } catch (error) {
     purchaseLoading.value = false;
-    ElMessage.error("授权失败");
+    ElMessage.error("Authorization failed");
     return false;
   }
   try {
@@ -254,7 +261,7 @@ const purchase = async (val) => {
     ).send({
       from: accounts[0],
     });
-    ElMessage.success("交易成功,订单信息将在稍后更新，请耐心等待！");
+    ElMessage.success("The transaction is successful, the order information will be updated later, please wait patiently！");
     purchaseLoading.value = false;
     dialogVisible.value = false;
     console.log(result);
@@ -275,7 +282,7 @@ const purchase = async (val) => {
     }, 10000);
   } catch (error) {
     purchaseLoading.value = false;
-    ElMessage.error("交易失败");
+    ElMessage.error("Transaction failed");
     console.error("Contract method call failed:", error);
   }
 };
@@ -296,10 +303,10 @@ const copyToClipboard = (text) => {
   navigator.clipboard
     .writeText(text)
     .then(function () {
-      ElMessage.success("分享链接复制成功！");
+      ElMessage.success("Sharing link copied successfully！");
     })
     .catch(function (err) {
-      ElMessage.error("分享链接复制失败");
+      ElMessage.error("Sharing link copy failed");
     });
 };
 const invitation = async () => {
@@ -310,9 +317,17 @@ const invitation = async () => {
   }`;
   copyToClipboard(url);
 };
-onBeforeMount(() => {
+const walletAccount = computed(async () => {
+  return store.account
+})
+watch(walletAccount, (newValue, oldValue) => {
   handleCurrentChange(1);
-  // getOrderlistFun();
+});
+onBeforeMount(async () => {
+  const accounts = await window.web3.eth.getAccounts();
+  if (accounts[0]) {
+    handleCurrentChange(1);
+  }
 });
 </script>
 <style lang="scss" scoped>
