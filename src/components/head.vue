@@ -1,9 +1,7 @@
 <template>
   <div class="head-com">
     <div class="head-level1 flex justify-content-between align-items-c">
-      <div class="head-login" @click="router.push('/')">
-        EdgeTime
-      </div>
+      <div class="head-login" @click="router.push('/')">EdgeTime</div>
       <div class="head-operate flex justify-content-between align-items-c">
         <el-dropdown
           class="dropdown"
@@ -33,7 +31,8 @@
           </template>
         </el-dropdown>
       </div>
-      <el-button class="link-wallet" @click="linkWalletFun()"
+      <span v-if="walletAccount" class="wallet-account">{{ walletAccount }}</span>
+      <el-button v-else class="link-wallet" @click="getRelationshipFun()"
         >连接钱包</el-button
       >
     </div>
@@ -44,6 +43,7 @@
 import { ArrowDown } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import { linkWallet } from "@/utils/common.js";
+import { getRelationship } from "@/api/base.js";
 const router = useRouter();
 const navList = ref([
   {
@@ -68,13 +68,15 @@ const navList = ref([
   {
     label: "Doc",
     icon: new URL("../assets/images/DOC.png", import.meta.url).href,
-    childNav: [   
+    childNav: [
       {
         label: "White Paper",
         url: "",
-      },],
+      },
+    ],
   },
 ]);
+const walletAccount = ref("");
 const linkWalletFun = async () => {
   try {
     const accounts = await window.web3.eth.getAccounts();
@@ -87,7 +89,61 @@ const linkWalletFun = async () => {
     linkWallet();
   }
 };
-onBeforeMount(() => {});
+const bindInviter = async () => {
+  try {
+    const url = window.location.search;
+    const params = {};
+    url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (_, key, value) {
+      params[key] = decodeURIComponent(value);
+    });
+    if (!params.inviter) {
+      return false;
+    }
+    await linkWallet();
+    const accounts = await window.web3.eth.getAccounts();
+    const result = await window.contract.methods["bindInviter"](
+      params.inviter
+    ).send({
+      from: accounts[0],
+    });
+    console.log(result);
+  } catch (error) {
+    console.error("bindInviter failed:", error);
+  }
+};
+const getRelationshipFun = async () => {
+  await linkWallet();
+  try {
+    const accounts = await window.web3.eth.getAccounts();
+    walletAccount.value =
+      accounts[0].substring(0, 4) +
+      "****" +
+      accounts[0].substr(accounts[0].length - 4);
+    const { data } = await getRelationship({
+      address: accounts[0],
+    });
+    if (!data.data.inviter) {
+      bindInviter();
+    } else {
+      linkWalletFun();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+onBeforeMount(async () => {
+  try {
+    const accounts = await window.web3.eth.getAccounts();
+    if (accounts[0]) {
+      walletAccount.value =
+        accounts[0].substring(0, 4) +
+        "****" +
+        accounts[0].substr(accounts[0].length - 4);
+    }
+  } catch (e) {
+    walletAccount.value = "";
+  }
+});
 </script>
 <style lang="scss" scoped>
 .head-com {
@@ -102,7 +158,7 @@ onBeforeMount(() => {});
       line-height: 60px;
       text-align: center;
       font-size: 40px;
-      color:#f2ba0c;
+      color: #f2ba0c;
       width: 206px;
       height: 66px;
     }
@@ -129,6 +185,10 @@ onBeforeMount(() => {});
           font-size: 16px;
         }
       }
+    }
+    .wallet-account {
+      font-size: 30px;
+      color: #f2ba0c;
     }
     .link-wallet {
       border: 0;

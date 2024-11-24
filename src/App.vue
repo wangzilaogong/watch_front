@@ -7,48 +7,10 @@ import { userStore } from "@/store/userStore.js";
 import { useRoute } from "vue-router";
 import { linkWallet } from "@/utils/common.js";
 import { onMounted } from "vue";
-import { getRelationship } from "@/api/base.js";
 const route = useRoute();
 const store = userStore();
 const locale = zhCn;
-const bindInviter = async () => {
-  try {
-    const url = window.location.search;
-    const params = {};
-    url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (_, key, value) {
-      params[key] = decodeURIComponent(value);
-    });
-    if (!params.inviter) {
-      return false;
-    }
-    await linkWallet();
-    const accounts = await window.web3.eth.getAccounts();
-    const result = await window.contract.methods["bindInviter"](
-      params.inviter
-    ).send({
-      from: accounts[0],
-    });
-    console.log(result);
-  } catch (error) {
-    console.error("bindInviter failed:", error);
-  }
-};
-const getRelationshipFun = async () => {
-  await linkWallet();
-  try {
-    const accounts = await window.web3.eth.getAccounts();
-    const { data } = await getRelationship({
-      address: accounts[0],
-    });
-    if (!data.data.inviter) {
-      bindInviter();
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
 onBeforeMount(() => {
-  getRelationshipFun();
   if (localStorage.getItem("state")) {
     store.$state = JSON.parse(localStorage.getItem("state"));
   }
