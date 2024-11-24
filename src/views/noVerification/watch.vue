@@ -13,32 +13,32 @@
       :rules="rules"
       label-width="auto"
     >
-      <el-form-item label="province" prop="province">
+      <el-form-item label="Province" prop="province">
         <el-input v-model.trim="ruleForm.province" clearable />
       </el-form-item>
       <el-form-item label="City" prop="city">
         <el-input v-model.trim="ruleForm.city" clearable />
       </el-form-item>
-      <el-form-item label="area" prop="district">
+      <el-form-item label="Area" prop="district">
         <el-input v-model.trim="ruleForm.district" clearable />
       </el-form-item>
-      <el-form-item label="street" prop="street">
+      <el-form-item label="Street" prop="street">
         <el-input v-model.trim="ruleForm.street" clearable />
       </el-form-item>
-      <el-form-item label="Detailed address" prop="detailed_address">
+      <el-form-item label="Address" prop="detailed_address">
         <el-input
           type="textarea"
           v-model.trim="ruleForm.detailed_address"
           clearable
         />
       </el-form-item>
-      <el-form-item label="Recipient name" prop="recipient_name">
+      <el-form-item label="Name" prop="recipient_name">
         <el-input v-model.trim="ruleForm.recipient_name" clearable />
       </el-form-item>
-      <el-form-item label="Recipient’s mobile phone number" prop="phone_number">
+      <el-form-item label="Phone number" prop="phone_number">
         <el-input v-model.trim="ruleForm.phone_number" clearable />
       </el-form-item>
-      <el-form-item label="Recipient email" prop="email">
+      <el-form-item label="Email" prop="email">
         <el-input v-model.trim="ruleForm.email" clearable />
       </el-form-item>
       <el-form-item>
