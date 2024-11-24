@@ -172,41 +172,93 @@ const validatePhone = (rule, value, callback) => {
 const rules = reactive({
   recipient_name: [
     { required: true, message: "Please enter recipient name", trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   province: [
     { required: true, message: "Please enter province", trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   city: [
     { required: true, message: "Please enter city", trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   district: [
     { required: true, message: "Please enter the area", trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   street: [
     { required: true, message: "Please enter street", trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   detailed_address: [
-    { required: true, message: "Please enter detailed address", trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      required: true,
+      message: "Please enter detailed address",
+      trigger: "blur",
+    },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   phone_number: [
-    { required: true, message: "Please enter the recipient's mobile phone number", trigger: "blur" },
+    {
+      required: true,
+      message: "Please enter the recipient's mobile phone number",
+      trigger: "blur",
+    },
     { validator: validatePhone, trigger: "blur" },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
   email: [
-    { required: true, message: "Please enter the recipient's email address", trigger: "blur" },
+    {
+      required: true,
+      message: "Please enter the recipient's email address",
+      trigger: "blur",
+    },
     {
       type: "email",
       message: "Please enter a correct email address",
       trigger: ["blur", "change"],
     },
-    { min: 1, max: 100, message: "Please enter no more than 100 characters", trigger: "blur" },
+    {
+      min: 1,
+      max: 100,
+      message: "Please enter no more than 100 characters",
+      trigger: "blur",
+    },
   ],
 });
 const newOrderAddress = ref({});
@@ -261,7 +313,9 @@ const purchase = async (val) => {
     ).send({
       from: accounts[0],
     });
-    ElMessage.success("The transaction is successful, the order information will be updated later, please wait patiently！");
+    ElMessage.success(
+      "The transaction is successful, the order information will be updated later, please wait patiently！"
+    );
     purchaseLoading.value = false;
     dialogVisible.value = false;
     console.log(result);
@@ -287,6 +341,10 @@ const purchase = async (val) => {
   }
 };
 const buyWatch = (amount) => {
+  if (!window.contract) {
+    alert("Please connect the wallet first");
+    return false;
+  }
   // ElMessageBox.prompt("请填写收货地址完成交易！", "提示", {
   //   confirmButtonText: "确定",
   //   cancelButtonText: "取消",
@@ -310,6 +368,10 @@ const copyToClipboard = (text) => {
     });
 };
 const invitation = async () => {
+  if (!window.contract) {
+    alert("Please connect the wallet first");
+    return false;
+  }
   await linkWallet();
   const accounts = await window.web3.eth.getAccounts();
   const url = `http://${window.location.href.split("/")[2]}?inviter=${
@@ -318,8 +380,8 @@ const invitation = async () => {
   copyToClipboard(url);
 };
 const walletAccount = computed(async () => {
-  return store.account
-})
+  return store.account;
+});
 watch(walletAccount, (newValue, oldValue) => {
   handleCurrentChange(1);
 });
