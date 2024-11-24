@@ -1,15 +1,14 @@
 <template>
   <div class="footer-com">
     <div class="footer-com-text">
-      Welcome to join us and we will receive updated data，<br />
-      will receive updated data
+      We’re here to help! Reach out to us via the following channels<br />
     </div>
     <div class="extension-list flex">
       <img class="extension-icon" src="../assets/images/x.png" />
       <img class="extension-icon" src="../assets/images/dog.png" />
       <img class="extension-icon" src="../assets/images/teleggram.png" />
     </div>
-    <div class="footnotes">@2021-2024财富自由发展有限公司</div>
+    <div class="footnotes">@2024EdgeTime</div>
   </div>
 </template>
 

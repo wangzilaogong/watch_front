@@ -1,7 +1,9 @@
 <template>
   <div class="head-com">
     <div class="head-level1 flex justify-content-between align-items-c">
-      <div class="head-login" @click="router.push('/')"></div>
+      <div class="head-login" @click="router.push('/')">
+        EdgeTime
+      </div>
       <div class="head-operate flex justify-content-between align-items-c">
         <el-dropdown
           class="dropdown"
@@ -96,7 +98,11 @@ onBeforeMount(() => {});
     padding: 0 223px 0 0;
     .head-login {
       cursor: pointer;
-      background: yellow;
+      // background: yellow;
+      line-height: 60px;
+      text-align: center;
+      font-size: 40px;
+      color:#f2ba0c;
       width: 206px;
       height: 66px;
     }

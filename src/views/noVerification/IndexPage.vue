@@ -42,29 +42,29 @@
       <div class="index-page-three flex justify-content-between">
         <div class="item-box">
           <div class="item-icon item-icon1"></div>
-          <div class="item-title">ROADMAP 1</div>
+          <div class="item-title">RoadMap Phase 1</div>
           <div class="item-content">
-            AgentNode 发售<br />
-            白名单活动<br />
-            premine
+            Design physical devices <br />
+            Pre-sales and distribute devices <br />
+            Build Community<br />
           </div>
         </div>
         <div class="item-box">
           <div class="item-icon item-icon2"></div>
-          <div class="item-title">roadmap 2 阶段</div>
+          <div class="item-title">RoadMap Phase 2</div>
           <div class="item-content">
-            智能边缘计算设备<br />
-            空投<br />
-            DepinNetwork 测试启动
+            Launch AgentNode <br />
+            Airdop For Early Community<br />
+            DepinNetwork TestNet Launch
           </div>
         </div>
         <div class="item-box">
           <div class="item-icon item-icon3"></div>
-          <div class="item-title">roadmap 3 阶段</div>
+          <div class="item-title">RoadMap Phase 3</div>
           <div class="item-content">
-            扩大网络<br />
-            基于物理设备的玩赚<br />
-            DepinNetwork IE式启动
+            MainNet launch <br />
+            Token launch <br />
+            Community building <br />
           </div>
         </div>
       </div>

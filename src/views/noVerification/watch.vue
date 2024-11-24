@@ -61,12 +61,13 @@
       <div class="right-box">
         <div class="title">Limited Edition Web3 Watch</div>
         <div class="txt">
-          Accelerate growth and get closer to the edge with Aethir's distri<br />
-          buted cloud compute infrastructure. We provide secure, cost-eff<br />
-          ective access to enterprise grade GPUs around
+          Heart Rate Monitor: Tracks your heart rate in real time<br />
+          Step Counter: Records the number of steps you take<br />
+          Sleep Tracker: Monitors your sleep patterns<br />
+          Exercise Modes: Tracks specific activities like running, cycling, or swimming
         </div>
         <div class="price-box flex align-items-c justify-content-between">
-          <div class="price-title">当前售价</div>
+          <div class="price-title">Price</div>
           <div class="price"><span class="price-num">399 </span>USDT</div>
         </div>
         <div class="operate-box flex align-items-c justify-content-between">
@@ -75,7 +76,7 @@
             v-loading="purchaseLoading"
             @click="buyWatch('399')"
           >
-            购买
+          Purchase
           </div>
           <div
             class="rebate-invitation flex align-items-c justify-content-between"
@@ -85,7 +86,7 @@
               src="../../assets/images/watch_telegram.png"
             />
             <div class="rebate-invitation-txt" @click="invitation()">
-              邀请返利<span class="proportion">10%</span>
+              Invite&Earn<span class="proportion">20%</span>
             </div>
           </div>
         </div>
@@ -93,19 +94,19 @@
     </div>
     <div class="watch-block2">
       <el-table :data="tableData" max-height="500" border style="width: 100%">
-        <el-table-column type="index" align="center" label="序号" width="214" />
+        <el-table-column type="index" align="center" label="No." width="214" />
         <el-table-column
           prop="address"
           align="center"
-          label="已邀请"
+          label="Referrals"
           width="326"
         />
-        <el-table-column prop="num" align="center" label="数量" width="214">
+        <el-table-column prop="num" align="center" label="Pcs" width="214">
           <template #default="scope">
             <span>1</span>
           </template>
         </el-table-column>
-        <el-table-column prop="shipping_address" align="center" label="地址" />
+        <el-table-column prop="shipping_address" align="center" label="Address" />
       </el-table>
       <div v-if="form.total > 10" class="paging-box">
         <el-pagination
